@@ -3,7 +3,7 @@ const faker = require('faker');
 
 
 const companyData = [];
-const tickers = [];
+const tickers = {};
 const allQuarters = ['Q4 2017', 'Q1 2018', 'Q2 2018', 'Q3 2018', 'Q4 2018', 'Q1 2019', 'Q2 2019'];
 allEarnings = [];
 
@@ -14,16 +14,16 @@ let createTicker = () => {
   for (let i = 0; i < 5; i++) {
     ticker += alphabet[Math.floor(Math.random() * 26)]
   }
-  if (tickers.includes(ticker)) {
+  if (tickers[ticker]) {
     createTicker();
   } else {
-    tickers.push(ticker);
+    tickers[ticker] = ticker;
   }
   return ticker;
 }
 
 console.time();
-for (let i = 0; i < 1000; i++) {
+for (let i = 0; i < 100000; i++) {
   companyData.push({
     id: i.toString(),
     ticker: createTicker(),
