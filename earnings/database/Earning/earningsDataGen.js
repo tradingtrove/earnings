@@ -19,6 +19,7 @@ let createTicker = () => {
   } else {
     tickers.push(ticker);
   }
+  return ticker;
 }
 
 console.time();
@@ -49,6 +50,7 @@ for (const company of companyData) {
 
     allEarnings.push({
       id: company.id,
+      ticker: company.ticker,
       company: company.company,
       quarter,
       quarterNumber,
