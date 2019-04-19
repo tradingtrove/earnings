@@ -57,17 +57,6 @@ let generation = () => {
   return allEarnings;
 }
 
-// let convertToCsv = (string) => {
-//   console.log(string);
-//   let convertData = JSON.parse(string);
-//   let csvString = 'ticker,company,quarter,quarternumber,actualEarning,estimatedEarning\n';
-//   // let csvString = '';
-//   for (let i = 0; i < convertData.length; i++) {
-//     csvString += convertData[i].values().join() + '\n';
-//   }
-//   fs.writeFileSync(csvFile, csvString);
-// }
-
 let convertToCsv = (array) => {
   let csvString = '';
   for (let i = 0; i < array.length; i++) {
@@ -99,4 +88,3 @@ let writeOneMillionTimes = (writer, encoding, callback) => {
 
 writeOneMillionTimes(file, () => console.log('drain'));
  
-// convertToCsv(fs.readFileSync('./DataGen'))
