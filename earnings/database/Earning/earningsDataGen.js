@@ -2,7 +2,6 @@ const faker = require('faker');
 const fs = require('fs');
 
 const file = fs.createWriteStream('./DataGen.csv');
-const csvFile = './DataGenCSV';
 
 const tickers = {};
 let allEarnings = [];
@@ -24,9 +23,9 @@ let createTicker = () => {
 }
 
 let generation = () => {
-  const companyData = {
+  const company = {
     ticker: createTicker(),
-    company: faker.company.companyName(),
+    company: faker.company.companyName().replace(/[,]/, ''),
   }
   let companyEarnings = [];
   let actualEarning = Math.random() * 7;
@@ -44,8 +43,8 @@ let generation = () => {
     estimatedEarning = estimatedEarning.toFixed(2);
 
     companyEarnings.push({
-      ticker: companyData.ticker,
-      company: companyData.company,
+      ticker: company.ticker,
+      company: company.company,
       quarter,
       quarterNumber,
       actualEarning: Number(actualEarning),
@@ -54,34 +53,25 @@ let generation = () => {
     quarterNumber += 1;
   }
   allEarnings.push(companyEarnings);
-  return allEarnings;
 }
-
-// let convertToCsv = (string) => {
-//   console.log(string);
-//   let convertData = JSON.parse(string);
-//   let csvString = 'ticker,company,quarter,quarternumber,actualEarning,estimatedEarning\n';
-//   // let csvString = '';
-//   for (let i = 0; i < convertData.length; i++) {
-//     csvString += convertData[i].values().join() + '\n';
-//   }
-//   fs.writeFileSync(csvFile, csvString);
-// }
 
 let convertToCsv = (array) => {
   let csvString = '';
-  for (let i = 0; i < array.length; i++) {
-    csvString += Object.values(array[i]).join() + '\n';
-  }
+  array.forEach( (company) => {
+    for (let i = 0; i < company.length; i++) {
+      csvString += Object.values(company[i]).join() + '\n';
+    }
+  });
   return csvString;
 }
 
 let writeOneMillionTimes = (writer, encoding, callback) => {
-  let i = 10000000;
+  let i = 2;
   write = () => {
     let ok = true;
     do {
-      let data = convertToCsv(generation()[10000000 - i]);
+      generation();
+      let data = convertToCsv(allEarnings);
       i--;
       if (i === 0) {
         writer.write(data, encoding, callback);
@@ -97,6 +87,5 @@ let writeOneMillionTimes = (writer, encoding, callback) => {
   write();
 }
 
-writeOneMillionTimes(file, () => console.log('drain'));
+writeOneMillionTimes(file);
  
-// convertToCsv(fs.readFileSync('./DataGen'))
