@@ -7,6 +7,8 @@ const allQuarters = ['Q4 2017', 'Q1 2018', 'Q2 2018', 'Q3 2018', 'Q4 2018', 'Q1 
 let alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 let generation = () => {
+  // let allEarnings = [];
+  // let companyData = [];
   let companyEarnings;
   let actualEarning;
   let estimatedEarning;
@@ -54,7 +56,7 @@ let generation = () => {
       });
     }
     recurse('');
-  })(5, 10000000);
+  })(5, 4000000);
 }
 
 
