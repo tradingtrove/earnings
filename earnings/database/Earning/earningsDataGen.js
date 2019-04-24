@@ -46,7 +46,7 @@ let generation = () => {
           quarterNumber += 1;
         }
         result = companyEarnings.join('');
-        writeOneMillionTimes(file, result);
+        writeOneTime(file, result);
         return;
       }
       alphabet.forEach( (letter) => {
