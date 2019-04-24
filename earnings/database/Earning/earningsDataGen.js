@@ -7,8 +7,6 @@ const allQuarters = ['Q4 2017', 'Q1 2018', 'Q2 2018', 'Q3 2018', 'Q4 2018', 'Q1 
 let alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 let generation = () => {
-  // let allEarnings = [];
-  // let companyData = [];
   let companyEarnings;
   let actualEarning;
   let estimatedEarning;
@@ -63,9 +61,6 @@ let generation = () => {
 let writeOneMillionTimes = (writer, data, encoding, callback) => {
   let i = 1;
   write = () => {
-    if (i % 100 === 0) {
-      console.error(i * 1000);
-    }
     let ok = true;
     do {
       i--;
