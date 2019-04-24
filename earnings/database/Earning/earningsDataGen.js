@@ -58,7 +58,7 @@ let generation = () => {
 }
 
 
-let writeOneMillionTimes = (writer, data, encoding, callback) => {
+let writeOneTime = (writer, data, encoding, callback) => {
   let i = 1;
   write = () => {
     let ok = true;
