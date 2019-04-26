@@ -46,7 +46,7 @@ let generation = () => {
           quarterNumber += 1;
         }
         result = companyEarnings.join('');
-        writeOneMillionTimes(file, result);
+        writeOneTime(file, result);
         return;
       }
       alphabet.forEach( (letter) => {
@@ -58,7 +58,7 @@ let generation = () => {
 }
 
 
-let writeOneMillionTimes = (writer, data, encoding, callback) => {
+let writeOneTime = (writer, data, encoding, callback) => {
   let i = 1;
   write = () => {
     if (i % 100 === 0) {
