@@ -1,5 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import EarningsChartFrame from './earningsChartFrame.jsx';
 import EarningBottomBar from './earningBottomBar.jsx';
@@ -9,7 +7,6 @@ import $ from 'jquery';
 // const host = window.location;
 const path = window.location.pathname;
 
-window.location.pathname
 class Earnings extends React.Component {
   constructor(props) {
     super(props);

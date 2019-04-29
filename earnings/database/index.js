@@ -7,6 +7,8 @@ const sequelize = new Sequelize(
   process.env.DATABASE_PASSWORD,
   {
     dialect: 'postgres',
+    // timestamps: false,
+    logging: false,
   },);
 const Earnings = require('./Earning/postgreSeed.js');
 
@@ -21,6 +23,7 @@ sequelize
 
 const getEarning = (id) => {
   return Earnings.findAll({
+    attributes: ['id', 'ticker', 'company', 'quarter', 'quarternumber', 'actualearning', 'estimatedearning'],
     where: {
       ticker: id,
     }
@@ -32,9 +35,9 @@ const postEarning = (data) => {
     ticker: data.ticker,
     company: data.company,
     quarter: data.quarter,
-    quarter_number: data.quarter_number,
-    actual_earning: data.actual_earning,
-    estimated_earning: data.estimated_earning,
+    quarternumber: data.quarter_number,
+    actualearning: data.actual_earning,
+    estimatedearning: data.estimated_earning,
   },
   { fields: [ 'ticker','company','quarter','quarter_number','actual_earning','estimated_earning' ]
   }) 

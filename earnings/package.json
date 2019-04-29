@@ -44,6 +44,7 @@
     "promise": "^8.0.3",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
+    "redis": "^2.8.0",
     "sequelize": "^5.7.5",
     "style-loader": "^0.23.1",
     "url-loader": "^1.1.2"

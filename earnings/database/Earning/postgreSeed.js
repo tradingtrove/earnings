@@ -5,9 +5,17 @@ const sequelize = new Sequelize(
   process.env.DATABASE_PASSWORD,
   {
     dialect: 'postgres',
-  },);
+    // timestamps: false,
+    logging: false,
+  },
+  );
 
 const Earnings = sequelize.define('earnings', {
+  id: {
+    type: Sequelize.INTEGER,
+    autoIncrement: true,
+    primaryKey: true,
+  },
   ticker: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -33,8 +41,6 @@ const Earnings = sequelize.define('earnings', {
     allowNull: false,
   }
   },
-  {
-    timestamps: false,
-  });
+  );
 
 module.exports = Earnings;
