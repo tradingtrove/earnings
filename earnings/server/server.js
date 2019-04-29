@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
 const redis = require('redis');
+const responseTime = require('response-time');
+
 const client = redis.createClient();
 
 const app = express();
@@ -16,18 +18,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(responseTime());
 
-const getEarningData = (request, response) => {
-  return app.get('/api/earnings/:id', (req, res) => {
-    sequelize.getEarning(req.params.id)
+const getEarningData = (req, res) => {
+  // return axios.get('localhost:8080/api/earnings/:id', (req, res) => {
+    return sequelize.getEarning(req.params.id)
     // sequelize.query(`SELECT * FROM earnings WHERE ticker = ${req.params.id}`)
       .then( (data) => {
         client.setex(req.params.id, 3600, JSON.stringify(data));
-        response.json(data);
+        res.json(data);
       })
       .catch( (err) => {
-        response.send(err);
+        res.send(err);
       })
-  });
 }
 
 const getCache = (req, res) => {
