@@ -1,0 +1,16 @@
+config:
+  target: 'http://localhost:8080'
+  phases:
+    # - duration: 120
+    #   arrivalRate: 30
+    #   rampTo: 200
+    - duration: 120
+      arrivalRate: 200
+  payload:
+    path: "tickers.txt"
+    fields:
+      - "ticker"
+scenarios:
+  - flow:
+    - get:
+        url: "/api/earnings/{{ ticker }}"

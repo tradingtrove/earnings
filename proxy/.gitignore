@@ -1,2 +1,4 @@
 grunt-aws.json
 *.pem
+newrelic.js
+.dockerignore

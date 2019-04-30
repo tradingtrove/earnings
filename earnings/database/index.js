@@ -1,27 +1,48 @@
-const mongoose = require('mongoose');
-const Earnings = require('./Earning/EarningScheme');
+require('dotenv').config();
 
-// const mongoUri = 'mongodb://localhost/stock';
-// const mongoUri = 'mongodb://gary:abcd1234@ds031922.mlab.com:31922/front-end-capstone-project';
-// const mongoUri = process.env.DATABASEURL;
-const mongoUri = 'mongodb://172.17.0.2/stock';
-mongoose.connect(mongoUri, { useNewUrlParser: true },
-  (err) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log('Connected to the database');
+const Sequelize = require('sequelize');
+const sequelize = new Sequelize(
+  process.env.DATABASE,
+  process.env.DATABASE_USER,
+  process.env.DATABASE_PASSWORD,
+  {
+    dialect: 'postgres',
+    // timestamps: false,
+    logging: false,
+  },);
+const Earnings = require('./Earning/postgreSeed.js');
+
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.');
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err);
+  });
+
+const getEarning = (id) => {
+  return Earnings.findAll({
+    attributes: ['id', 'ticker', 'company', 'quarter', 'quarternumber', 'actualearning', 'estimatedearning'],
+    where: {
+      ticker: id,
     }
-  });
-const db = mongoose.connection;
-
-const getEarning = (id, callback) => {
-  const query = { id };
-  Earnings.find(query, (err, data) => {
-    if (err) callback(err);
-    callback(data);
-  });
+  }) 
 };
 
-module.exports = db;
+const postEarning = (data) => {
+  return Earnings.create({
+    ticker: data.ticker,
+    company: data.company,
+    quarter: data.quarter,
+    quarternumber: data.quarter_number,
+    actualearning: data.actual_earning,
+    estimatedearning: data.estimated_earning,
+  },
+  { fields: [ 'ticker','company','quarter','quarter_number','actual_earning','estimated_earning' ]
+  }) 
+};
+
+module.exports = sequelize;
 module.exports.getEarning = getEarning;
+module.exports.postEarning = postEarning;

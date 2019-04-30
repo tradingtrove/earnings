@@ -10,10 +10,10 @@ class EarningChart extends React.Component {
   render() {
     const { actMax } = this.props.actQrt;
     const { actMin } = this.props.actQrt;
-    const { actualEarning } = this.props.earning;
-    const actSpot = (actualEarning - actMin) / (actMax - actMin) * 120;
-    const { estimatedEarning } = this.props.earning;
-    const estSpot = (estimatedEarning - actMin) / (actMax - actMin) * 120;
+    const { actualearning } = this.props.earning;
+    const actSpot = (actualearning - actMin) / (actMax - actMin) * 120;
+    const { estimatedearning } = this.props.earning;
+    const estSpot = (estimatedearning - actMin) / (actMax - actMin) * 120;
     return (
      <div className='EPS-date'>
       <span className='EstimatedCircle'></span>

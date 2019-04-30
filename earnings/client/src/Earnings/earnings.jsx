@@ -1,14 +1,12 @@
-/* eslint-disable max-len */
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import EarningsChartFrame from './earningsChartFrame.jsx';
 import EarningBottomBar from './earningBottomBar.jsx';
 import $ from 'jquery';
 
-const host = '52.53.224.110';
+// const host = '52.53.224.110';
+// const host = window.location;
 const path = window.location.pathname;
 
-window.location.pathname
 class Earnings extends React.Component {
   constructor(props) {
     super(props);
@@ -17,9 +15,16 @@ class Earnings extends React.Component {
     };
   }
 
+  // componentDidMount() {
+  //   $.get(`http://${host}:3002/api/earnings${path}`, (Data) => {
+  //     this.setState({
+  //       earnings: Data,
+  //     });
+  //   });
+  // }
+
   componentDidMount() {
-    $.get(`http://${host}:3002/api/earnings${path}`, (Data) => {
-    // $.get('//front-end-capstone.herokuapp.com/data/earnings', (Data) => {
+    $.get(`http://localhost:8080/api/earnings${path}`, (Data) => {
       this.setState({
         earnings: Data,
       });
@@ -30,8 +35,8 @@ class Earnings extends React.Component {
     const earningsData = this.state.earnings;
     const actEarnings = [];
     const estEarnings = [];
-    earningsData.sort((a, b) => a.quarterNumber - b.quarterNumber);
-    earningsData.forEach(x => actEarnings.push(x.actualEarning));
+    earningsData.sort((a, b) => a.quarternumber - b.quarternumber);
+    earningsData.forEach(x => actEarnings.push(x.actualearning));
     let actMax = Math.max(...actEarnings);
     let actMin = Math.min(...actEarnings);
     const actFirstQuartile = (actMin + (actMax - actMin) / 3).toFixed(2);
@@ -44,7 +49,7 @@ class Earnings extends React.Component {
       actFirstQuartile,
       actMin,
     };
-    earningsData.forEach(x => estEarnings.push(x.estimatedEarning));
+    earningsData.forEach(x => estEarnings.push(x.estimatedearning));
     let estMax = Math.max(...estEarnings);
     let estMin = Math.min(...estEarnings);
     const estFirstQuartile = (estMin + (estMax - estMin) / 3).toFixed(2);

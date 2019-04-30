@@ -2,3 +2,6 @@ grunt-aws.json
 package-lock.json
 test.gz
 DataGen.csv
+.env
+newrelic.js
+newrelic_agent.log
