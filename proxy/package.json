@@ -20,7 +20,9 @@
     "express": "^4.16.4",
     "jquery": "^3.4.0",
     "mongoose": "^5.4.20",
-    "morgan": "^1.9.1"
+    "morgan": "^1.9.1",
+    "redis": "^2.8.0",
+    "response-time": "^2.3.2"
   },
   "devDependencies": {
     "enzyme": "^3.9.0",

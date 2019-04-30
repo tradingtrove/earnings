@@ -19,7 +19,6 @@ app.use(bodyParser.json());
 app.use(responseTime());
 
 const getEarningData = (req, res) => {
-  // return axios.get('localhost:8080/api/earnings/:id', (req, res) => {
     return sequelize.getEarning(req.params.id)
     // sequelize.query(`SELECT * FROM earnings WHERE ticker = ${req.params.id}`)
       .then( (data) => {
