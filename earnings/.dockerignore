@@ -4,3 +4,4 @@ grunt-aws.json
 .env
 newrelic.js
 newrelic_agent.log
+SDC.pem
