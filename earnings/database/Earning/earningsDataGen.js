@@ -61,9 +61,6 @@ let generation = () => {
 let writeOneTime = (writer, data, encoding, callback) => {
   let i = 1;
   write = () => {
-    if (i % 100 === 0) {
-      console.error(i * 1000);
-    }
     let ok = true;
     do {
       i--;
