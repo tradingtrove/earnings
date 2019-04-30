@@ -5,3 +5,4 @@ DataGen.csv
 .env
 newrelic.js
 newrelic_agent.log
+SDC.pem
