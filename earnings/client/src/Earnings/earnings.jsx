@@ -4,7 +4,7 @@ import EarningBottomBar from './earningBottomBar.jsx';
 import $ from 'jquery';
 
 // const host = '52.53.224.110';
-// const host = window.location;
+const host = 'ec2-13-56-247-104.us-west-1.compute.amazonaws.com';
 const path = window.location.pathname;
 
 class Earnings extends React.Component {
@@ -15,21 +15,21 @@ class Earnings extends React.Component {
     };
   }
 
-  // componentDidMount() {
-  //   $.get(`http://${host}:3002/api/earnings${path}`, (Data) => {
-  //     this.setState({
-  //       earnings: Data,
-  //     });
-  //   });
-  // }
-
   componentDidMount() {
-    $.get(`http://localhost:8080/api/earnings${path}`, (Data) => {
-      this.setState({
-        earnings: Data,
-      });
-    });
-  }
+     $.get(`http://${host}:8080/api/earnings${path}`, (Data) => {
+       this.setState({
+         earnings: Data,
+       });
+     });
+   }
+
+  // componentDidMount() {
+    // $.get(`http://localhost:8080/api/earnings${path}`, (Data) => {
+      // this.setState({
+        // earnings: Data,
+      // });
+    // });
+  // }
 
   render() {
     const earningsData = this.state.earnings;
