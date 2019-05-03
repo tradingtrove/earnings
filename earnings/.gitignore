@@ -5,4 +5,7 @@ DataGen.csv
 .env
 newrelic.js
 newrelic_agent.log
-SDC.pem
+*.pem
+ec2_user@ec2-13-56-183-206.us-west-1.compute.amazonaws.com
+ec2-user@13.56.183.206
+loaderio.txt

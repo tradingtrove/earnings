@@ -42,6 +42,10 @@ const getCache = (req, res) => {
 
 app.get('/api/earnings/:id', getCache);
 
+app.get('/loaderio-f08a664b5e65fa4bd37b2c8c1746554d.txt', (req, res) => {
+  res.send('../loaderio.txt')
+});
+
 app.post('/api/earnings/', (req, res) => {
   sequelize.postEarning(req.body)
     .then( (response) => {

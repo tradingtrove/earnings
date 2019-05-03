@@ -4,7 +4,7 @@ import EarningBottomBar from './earningBottomBar.jsx';
 import $ from 'jquery';
 
 // const host = '52.53.224.110';
-const host = 'ec2-13-56-247-104.us-west-1.compute.amazonaws.com';
+const host = 'ec2-54-153-74-107.us-west-1.compute.amazonaws.com';
 const path = window.location.pathname;
 
 class Earnings extends React.Component {
